@@ -47,13 +47,13 @@ def set_filelist(ui: Ui_MainWindow):
     if len(csv_files) == 0:
         ui.statusbar.showMessage('Data directory does not have csv files')
         return
-
+    ui.ui_filelist.clear()
     ui.ui_filelist.addItems(csv_files)
 
 
 def set_datatable(ui: Ui_MainWindow):
     from peel import peel_test
-    from PyQt5 import QtWidgets
+    from PyQt6 import QtWidgets
 
     filename = ui.ui_filelist.currentItem().text()
     filepath = f'{ui.ui_datapath.text()}/{filename}'

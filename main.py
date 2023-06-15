@@ -23,11 +23,18 @@
 
 if __name__ == '__main__':
     import sys
-    from PyQt5 import QtWidgets
+    from PyQt6 import QtWidgets
     from ui_mainwindow import Ui_MainWindow
+    from qt_material import apply_stylesheet
     from peel_ui import set_path, set_datatable, init_graph, save_data
 
     app = QtWidgets.QApplication(sys.argv)
+
+    extra = {
+        'density_scale': '-1',
+    }
+    apply_stylesheet(app, theme='light_blue.xml', invert_secondary=True, extra=extra)
+
     MainWindow = QtWidgets.QMainWindow()
 
     ui = Ui_MainWindow()
@@ -40,4 +47,4 @@ if __name__ == '__main__':
     ui.ui_save.clicked.connect(lambda: save_data(ui))
 
     MainWindow.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
